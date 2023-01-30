@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Product</title>
+</head>
+
+<body>
+    <style>
+        html,
+        body {
+            height: 60%;
+        }
+
+        html {
+            display: table;
+            margin: auto;
+            background-color: #4eff4e;
+        }
+
+        body {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        image {
+            display: block;
+            width: 95%;
+            position: relative;
+            max-width: 95%;
+        }
+
+        h3 {
+            display: block;
+            position: relative;
+            width: auto;
+            font-size: x-large;
+            font-family: monospace;
+            text-align: center;
+        }
+
+        .settingData {
+            display: flex;
+            padding: 10px;
+            justify-content: space-evenly;
+            align-items: center;
+            justify-items: center;
+            flex-direction: column;
+        }
+
+        .settingData>input {
+            height: 30px;
+            text-align: center;
+            max-inline-size: max-content;
+            font-family: monospace;
+            font-size: unset;
+            margin-bottom: 12px;
+        }
+
+        .settingData>div>button {
+            display: block;
+            font-family: monospace;
+            width: 70%;
+            background-color: #039be5;
+            font-size: initial;
+            margin: 3px;
+        }
+
+        #recall {
+            padding: 10px;
+            margin-top: 6px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+
+        image {
+            max-width: 30%
+        }
+
+
+        /* Loading Box */
+        .boxLoad {
+            position: unset;
+            top: 45px;
+            left: 130px;
+            width: 30%;
+            display: flex;
+            justify-content: center;
+            background-color: #37474f87;
+            align-items: center;
+            transition: opacity 0.85s, visibility 0.85s;
+            /* background-color: rgba(0, 0, 0, 0.5); */
+            z-index: 1
+        }
+
+        .boxLoad::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-bottom: 6px solid #fff8e1;
+            border-radius: 50%;
+            animation: loading 1.5s linear infinite;
+            z-index: 0;
+        }
+
+        .hidden_slow {
+            opacity: 0;
+            visibility: hidden;
+            z-index: -1;
+            display: none;
+        }
+
+        @keyframes loading {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+    <!-- HTML -->
+    <div class="settingData">
+        <div class="boxLoad" id="boxLoad"></div>
+        <img id="imgData" src="./imgs/question.png" alt="product">
+        <h3 id="producttitle"></h3>
+    </div>
+    <div class="settingData">
+        <input id="inputValue" type="text" name="value id" placeholder="typing..." value="" style="max-width: 30%;" />
+        <div class="buttons">
+            <button id="recall">↺</button>
+            <button id="buttonSend">Check Out</button>
+            <span id="showas-quiest"></span>
+        </div>
+
+    </div>
+    <!-- HTML -->
+
+
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
