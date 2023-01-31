@@ -11,11 +11,15 @@ const img = document.getElementById("imgData");
 const producttitle = document.getElementById("producttitle");
 // DOM ELEMENTS //
 
+let timerSeconds = 5;
+let timeoutRequest;
+
 
 // GLOBAL DATA //
 let arrayObject = [];
 let dataProduct = { id: null };
 // GLOBAL DATA //
+
 
 
 function sendId(id = '0') {
@@ -48,10 +52,13 @@ function selectRandomProduct(products = []) {
 
     // Show new data product//
     img.src = productSelected.img ? productSelected.img : './imgs/question.png';
+    timeoutRequest = setTimeout(() => { img.src = './imgs/question.png' }, timerSeconds * 1000);
     img.addEventListener('load', () => {
         boxLoad.style.display = "none";
         producttitle.textContent = productSelected.productName;
         img.style.opacity = "1";
+        clearTimeout(timeoutRequest);
+        timeoutRequest = 0;
     });
 
     img.style.maxWidth = "30%";
@@ -73,5 +80,4 @@ async function getJson() {
 getJson();
 buttonSend.addEventListener('click', () => sendId(input.value.toLocaleLowerCase()));// send the id to test it //
 recaller.addEventListener('click', () => selectRandomProduct(arrayObject))
-
 
